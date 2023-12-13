@@ -1,14 +1,16 @@
 package menu.domain;
 
-import java.util.List;
-
 public class Coach {
 
     private final String name;
-    private final List<Food> disabledFoods;
+    private final Foods disabledFoods;
 
-    public Coach(String name, List<Food> disabledFoods) {
+    public Coach(String name, Foods disabledFoods) {
         this.name = name;
         this.disabledFoods = disabledFoods;
+    }
+
+    public boolean canEat(Food food) {
+        return !disabledFoods.contains(food);
     }
 }

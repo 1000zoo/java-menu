@@ -26,4 +26,8 @@ public class Foods {
         }
         return names;
     }
+
+    public boolean contains(Food food) {
+        return foods.contains(food);
+    }
 }
