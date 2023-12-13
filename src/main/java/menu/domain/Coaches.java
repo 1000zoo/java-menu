@@ -5,12 +5,25 @@ import java.util.List;
 
 public class Coaches {
 
-    private final List<Coach> coaches = new ArrayList<>();
+    private final List<Coach> coaches;
 
-    public void addCoach(Coach coach) {
-        if (coaches.contains(coach)) {
+    private Coaches(List<Coach> coaches) {
+        this.coaches = coaches;
+    }
+
+    public static Coaches of(List<String> coachNames) {
+        validate(coachNames);
+        List<Coach> coaches = new ArrayList<>();
+        for (String name : coachNames) {
+
+        }
+        return null;
+    }
+
+    private static void validate(List<String> coachNames) {
+        if (coachNames.size() < 2 || coachNames.size() > 5) {
             throw new IllegalArgumentException();
         }
-        coaches.add(coach);
     }
+
 }

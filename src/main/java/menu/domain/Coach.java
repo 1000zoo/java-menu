@@ -1,16 +1,24 @@
 package menu.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Coach {
 
     private final String name;
-    private final Foods disabledFoods;
+    private final List<Food> disabledFoods = new ArrayList<>();
 
-    public Coach(String name, Foods disabledFoods) {
+    public Coach(String name) {
         validate(name);
         this.name = name;
-        this.disabledFoods = disabledFoods;
+    }
+
+    public void addDisabledFood(Food food) {
+        if (disabledFoods.contains(food)) {
+            throw new IllegalArgumentException();
+        }
+        disabledFoods.add(food);
     }
 
     private void validate(String name) {

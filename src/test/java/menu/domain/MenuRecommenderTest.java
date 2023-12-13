@@ -10,8 +10,13 @@ class MenuRecommenderTest {
     @DisplayName("카테고리 맵 테스트")
     void categoriesMapTest() {
         // given
-        Coach coach1 = new Coach("jj", Foods.of(List.of("김밥", "우동")));
-        Coach coach2 = new Coach("jk", Foods.of(List.of("하이라이스", "탕수육")));
+        Coach coach1 = new Coach("jj");
+        coach1.addDisabledFood(new Food("김밥"));
+        coach1.addDisabledFood(new Food("우동"));
+        Coach coach2 = new Coach("jk");
+        coach1.addDisabledFood(new Food("하이라이스"));
+        coach1.addDisabledFood(new Food("동파육"));
+
         // when
         MenuRecommender menuRecommender = new MenuRecommender();
         menuRecommender.setMenu(List.of(coach1, coach2));
