@@ -14,6 +14,14 @@ public class Coach {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void clear() {
+        disabledFoods.clear();
+    }
+
     public void addDisabledFood(Food food) {
         if (disabledFoods.contains(food)) {
             throw new IllegalArgumentException();
