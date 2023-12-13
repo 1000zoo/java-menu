@@ -11,7 +11,7 @@ import menu.view.Input;
 public class CoachController {
 
     private final Input input = new Input();
-    private List<Coach> coachList = new ArrayList<>();
+    private final List<Coach> coachList = new ArrayList<>();
 
     public Coaches readCoaches() {
         createUntilValid();
@@ -36,7 +36,7 @@ public class CoachController {
     }
 
     private void setCoachDetail(Coach coach) {
-        System.out.println(coach.getName() + "이(가) 못 먹는 메뉴를 입력해 주세요.");
+        System.out.println(coach.getName() + "(이)가 못 먹는 메뉴를 입력해 주세요.");
         List<String> disabledFoodNameList = stringToList(input.readLine());
         validateFoodNameList(disabledFoodNameList);
         for (String foodName : disabledFoodNameList) {
@@ -61,7 +61,7 @@ public class CoachController {
     }
 
     private void createCoaches() {
-        System.out.println("코치의 이름을 입력해 주세요.");
+        System.out.println("코치의 이름을 입력해 주세요. (, 로 구분)");
         List<String> nameList = stringToList(input.readLine());
         validateNameList(nameList);
         for (String name : nameList) {

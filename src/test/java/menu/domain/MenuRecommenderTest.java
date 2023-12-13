@@ -19,7 +19,7 @@ class MenuRecommenderTest {
 
         // when
         MenuRecommender menuRecommender = new MenuRecommender();
-        menuRecommender.setMenu(List.of(coach1, coach2));
+        menuRecommender.setMenu(new Coaches(List.of(coach1, coach2)));
         // then
 
         System.out.println(menuRecommender);

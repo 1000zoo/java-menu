@@ -12,8 +12,11 @@ public class MenuRecommender {
     private final Map<Coach, List<Food>> coachListMap = new HashMap<>();
     private final List<Category> categories = new ArrayList<>();
 
-    public void setMenu(List<Coach> coaches) {
+    private Coaches coaches;
+
+    public void setMenu(Coaches coaches) {
         initMap(coaches);
+        this.coaches = coaches;
         for (int i = 0; i < 5; i++) {
             Category category = pickCategory();
             categories.add(category);
@@ -21,14 +24,14 @@ public class MenuRecommender {
         }
     }
 
-    private void initMap(List<Coach> coaches) {
-        for (Coach coach : coaches) {
+    private void initMap(Coaches coaches) {
+        for (Coach coach : coaches.coaches()) {
             coachListMap.put(coach, new ArrayList<>());
         }
     }
 
-    private void recommendMenuForCoaches(List<Coach> coaches, Category category) {
-        for (Coach coach : coaches) {
+    private void recommendMenuForCoaches(Coaches coaches, Category category) {
+        for (Coach coach : coaches.coaches()) {
             recommendMenuForCoach(coach, category);
         }
     }
@@ -56,6 +59,19 @@ public class MenuRecommender {
             }
         }
         return count >= 2;
+    }
+
+    public List<String> categoryList() {
+        return categories.stream().map(Category::getCategoryName).toList();
+    }
+
+    public Map<String, List<String>> recommendedMenu() {
+        Map<String, List<String>> map = new HashMap<>();
+        List<String> coachNames = coaches.coachNames();
+        for (String coach : coachNames) {
+            map.put(coach, coachListMap.get(new Coach(coach)).stream().map(Food::name).toList());
+        }
+        return map;
     }
 
     @Override

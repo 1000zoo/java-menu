@@ -60,6 +60,7 @@ public class Coach {
     public String toString() {
         return "Coach{" +
                 "name='" + name + '\'' +
+                "\n" + disabledFoods +
                 '}';
     }
 }
