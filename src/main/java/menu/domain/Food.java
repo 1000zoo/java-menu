@@ -1,5 +1,5 @@
 package menu.domain;
 
-public record Food(String name, Category category) {
+public record Food(String name) {
 
 }
